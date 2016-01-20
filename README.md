@@ -12,8 +12,11 @@ To start the project:
 * Start Node.js: sudo nodemon server/server.js 
 
 ### How to login
-###### User: admin
-###### Password: admin
+
+User: admin
+
+
+Password: admin
 
 ### Functions
 * Photos
