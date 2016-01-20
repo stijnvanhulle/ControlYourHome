@@ -1,0 +1,175 @@
+<div class="container" id="filter" ng-controller="filterController">
+
+    <div class="row">
+        <h1>FILTER</h1>
+        <section>
+            <div class="ui input date form-group">
+                <input type="date" ng-model="from" placeholder="Van datum"/>
+            </div>
+            <div class="ui input date form-group">
+                <input type="date" ng-model="to" placeholder="Tot datum"/>
+            </div>
+
+            <div class="form-group" style="float: right">
+                <button class="ui primary button"  ng-click="findData()">Vind data</button>
+                <button class="ui button" ng-click="print()" ng-show="!showFind && hideFilter==false">Opslaan als pdf</button>
+                <a class="ui button" ng-click="saveJSON()" ng-show="!showFind && hideFilter==false" download="data.json" ng-href="{{url}}">Download</a>
+
+            </div>
+
+        </section>
+    </div>
+
+    <div ng-show="hideFilter==true && loading==false">
+        <p>Geen data beschikbaar</p>
+    </div>
+    <loading ng-show="loading==true"></loading>
+
+    <div ng-show="hideFilter==false && loading==false">
+        <div class="row">
+            <div class="col-md-3 col-xs-3"></div>
+            <div class="col-md-6 col-xs-12">
+                <div class="panel">
+                    <h1>Statistieken</h1>
+                    <section class="stats">
+                        <div class="item">
+                            <div class="center">
+                                <div class="left">
+                                    <h2>Maximum:</h2>
+                                </div>
+
+                                <div class="right">
+                                    <p ng-show="tempMax==null">Laden</p>
+                                    <p ng-show="tempMax!=null">{{tempMax + " °"}}</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <div class="center">
+                                <div class="left">
+                                    <h2>Minimum:</h2>
+                                </div>
+                                <div class="right">
+                                    <p ng-show="tempMin==null">Laden</p>
+                                    <p ng-show="tempMin!=null">{{tempMin + " °"}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="center">
+                                <div class="left">
+                                    <h2>Gemiddelde temperatuur:</h2>
+                                </div>
+                                <div class="right">
+                                    <p ng-show="tempAvg==null">Laden</p>
+                                    <p ng-show="tempAvg!=null">{{tempAvg + " °"}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="center">
+                                <div class="left">
+                                    <h2>Gemiddelde Humidity:</h2>
+                                </div>
+                                <div class="right">
+                                    <p ng-show="humAvg==null">Laden</p>
+                                    <p ng-show="humAvg!=null">{{humAvg + " %"}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </section>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-3"></div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6 col-xs-12">
+                <div class="panel">
+                    <h1>Lijndiagram</h1>
+                    <section>
+                        <div ng-show="data==null">Laden</div>
+                        <canvas id="line" class="chart chart-line" chart-data="data"
+                                chart-labels="labels" chart-legend="true" chart-series="series"
+                                chart-click="onClick" >
+                        </canvas>
+                    </section>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xs-12">
+                <div class="panel">
+                    <h1>Bar diagram</h1>
+                    <section>
+                        <div ng-show="data==null">Laden</div>
+                        <canvas id="bar" class="chart chart-bar"
+                                chart-data="data" chart-legend="true" chart-click="onClick" chart-labels="labels" chart-series="series">
+                        </canvas>
+                    </section>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-xs-6">
+                <div class="panel">
+                    <h1>Temperatuur</h1>
+                    <section>
+                        <span class="inside">{{current.temp==null?"Laden": current.temp + " °C"}}</span>
+                        <div style="text-align: center"
+                             round-progress
+                             max="40"
+                             current="current.temp"
+                             color="#45ccce"
+                             bgcolor="#eaeaea"
+                             radius="100"
+                             stroke="20"
+                             semi="false"
+                             rounded="true"
+                             clockwise="false"
+                             responsive="false"
+                             duration="800"
+                             animation="easeInOutQuart">
+
+
+                    </section>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <div class="panel">
+                    <h1>Humidity</h1>
+                    <section>
+
+                        <span class="inside">{{current.hum==null?"Laden": current.hum + " %"}}</span>
+
+                        <div style="text-align: center"
+                             round-progress
+                             max="100"
+                             current="current.hum"
+                             color="#45ccce"
+                             bgcolor="#eaeaea"
+                             radius="100"
+                             stroke="20"
+                             semi="false"
+                             rounded="true"
+                             clockwise="false"
+                             responsive="false"
+                             duration="800"
+                             animation="easeInOutQuart">
+
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,404 @@
+.panel{
+  width: 100%;
+  position: relative;
+  float: left;
+  background: white;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 0.4em;
+  color: black;
+  overflow: hidden;
+  box-shadow: 0 5px 6px -3px rgba(0,0,0,.2),0 9px 12px 1px rgba(0,0,0,.14),0 3px 16px 2px rgba(0,0,0,.12);
+  font-size: 1em;
+  font-weight: 200;
+  margin-bottom: 8px;
+  z-index: 2;
+  border: none;
+
+
+  section{
+    float: left;
+    position: relative;
+    width: 100%;
+  }
+
+  h1 {
+    color: #000000;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin-top: 0px;
+  }
+  h2 {
+    color: #000000;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 200;
+    text-transform: uppercase;
+  }
+  h3 {
+    color: #000000;
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: 200;
+    text-transform: uppercase;
+  }
+}
+
+
+
+
+  #weather {
+    height: 290px;
+
+    .city{
+      position: absolute;
+      width: 100%;
+      bottom: 35%;
+      z-index: 3;
+      font-size: 1.2em;
+      font-weight: 100;
+      text-transform: uppercase;
+    }
+
+    #inside{
+      float: left;
+      position: relative;
+      width: 50%;
+      height: 65%;
+      > .temp {
+        font-size: 3.8em;
+        font-weight: 100;
+        z-index: 2;
+        position: absolute;
+        top: 30px;
+        left: 5px;
+        width: 100%;
+      }
+      > .hum{
+        font-size: 1.5em;
+        font-weight: 100;
+        z-index: 2;
+        position: absolute;
+        top: 70px;
+        left: 5px;
+        width: 100%;
+      }
+
+    }
+    #outside{
+      float: right;
+      position: relative;
+      width: 50%;
+      height: 65%;
+      > .temp {
+        font-size: 1.5em;
+        font-weight: 100;
+        text-align: right;
+        z-index: 2;
+        position: absolute;
+        width: 100%;
+        bottom: 25px;
+        margin-bottom: 0px;
+        right: 5px;
+      }
+      > .hum{
+        font-size: 1.1em;
+        font-weight: 100;
+        text-align: right;
+        z-index: 2;
+        position: absolute;
+        width: 100%;
+        bottom: 7px;
+        margin-bottom: 0px;
+        right: 5px;
+      }
+      > .icon{
+        width: 100%;
+        z-index: 4;
+        position: absolute;
+        color: white;
+        text-align: right;
+      }
+      .icon span{
+        position: absolute;
+        font-size: .8em;
+        margin-top: 0px;
+        font-weight: 200;
+        text-transform: uppercase;
+        right: 40px;
+        top: 10px;
+      }
+    }
+
+    aside#forecast{
+      float: left;
+      position: relative;
+      height: calc(35% + 8px);
+      margin-left: -8px;
+      margin-right: -8px;
+      width: calc(100% + 16px);
+      z-index: 3;
+      background: rgba(255,255,255,.68);
+      padding: 2px;
+      box-sizing: border-box;
+      padding-top: 5px;
+      div{
+        float: left;
+        position: relative;
+        height: 100%;
+        width: calc(100% / 7);
+      }
+      .temp {
+        font-size: 1em;
+        text-align: center;
+        position: relative;
+        width: 75%;
+        margin-bottom: 0px;
+        margin: 0 auto;
+      }
+      .temp span:first-child {
+        float: left;
+        position: relative;
+        width: 60%;
+        font-size: 1.2em;
+        color: #000;
+        font-weight: 300;
+      }
+      .temp span:last-child {
+        float: right;
+        position: relative;
+        width: 40%;
+        font-size: .7em;
+        color: #000;
+        font-weight: 300;
+      }
+      .hum{
+        float: left;
+        position: relative;
+        width: 100%;
+        text-align: center;
+        color: rgb(117, 117, 117);
+        margin-bottom: 0px;
+      }
+      .icon{
+        float: left;
+        position: relative;
+        width: 100%;
+        text-align: center;
+        color: #757575;
+        margin-bottom: 0px;
+      }
+      .icon span{
+        float: left;
+        position: relative;
+        font-size: 0.6em;
+        margin-top: -13px;
+        text-align: center;
+        width: 100%;
+        font-weight: 200;
+        text-transform: uppercase;
+        overflow: hidden;
+        height: 14px;
+      }
+    }
+
+    div.image{
+      width: 100%;
+      margin-left: -8px;
+      position: absolute;
+      z-index: 1;
+      background-repeat: no-repeat;
+      background-position-x: 0;
+      background-position-y: 58%;
+      background-size: cover;
+      height: 100%;
+      margin-top: -8px;
+
+    }
+
+  }
+  #weather.day{
+    div.image{
+      background-image: url("/images/day.png");
+    }
+
+    .temp,.hum {
+      color: #3E3E3E;
+    }
+    .city{
+      color: black;
+    }
+  }
+  #weather.night{
+    div.image{
+      background-image: url("/images/night.png");
+    }
+
+    .temp,.hum {
+      color: white;
+    }
+    .city{
+       color: white;
+    }
+  }
+  #linearChartTemperatures {
+    float: left;
+    position: relative;
+    width: 100%;
+  }
+
+  #statusses{
+    svg{
+      animation:none;
+    }
+
+    #lamp1 {
+      height: 100px;
+    }
+
+    .type {
+      float: left;
+      position: relative;
+      width: 40%;
+
+    }
+    .status {
+      float: right;
+      position: relative;
+      width: 60%;
+
+    }
+    p.change {
+      float: right;
+
+    }
+
+
+
+
+  }
+
+#webcam {
+  position: relative;
+  float: left;
+  width: calc(100% + 16px);
+  margin-right: 10%;
+  margin-left: -8px;
+  margin-bottom: -8px;
+  min-height: 300px;
+  img{
+    width: 100%;
+  }
+
+
+}
+
+#photos {
+  width: calc(100% + 16px);
+  height: 75px;
+  overflow: hidden;
+  margin-bottom: -34px;
+  margin-left: -8px;
+  margin-top: 16px;
+
+  div {
+    width: calc(100% / 9);
+    position: relative;
+    float: left;
+    margin-top: 8px;
+  }
+}
+
+#photos.all{
+  height: auto;
+  margin-bottom: -8px;
+  margin-top: 0px;
+  div{
+    width: calc(100% / 5);
+  }
+  figure figcaption{
+    font-size: 0.6em;
+    background: rgba(255, 255, 255, 0.83);
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding: 3px;
+    box-sizing: border-box;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    text-align: center;
+  }
+}
+
+span.outside{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: -25px;
+}
+span.inside{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+}
+.images {
+  height: 165px;
+  overflow-x: scroll;
+  section{
+    margin-bottom: 20px;
+  }
+}
+aside.takeImage {
+  z-index: 9;
+  bottom: 13%;
+  width: 100px;
+  box-sizing: border-box;
+  left: calc((100% - 100px) /2);
+  position: absolute;
+}
+
+#count{
+  position: absolute;
+  z-index: 9;
+  background: white;
+  font-size: 5em;
+  font-weight: 100;
+  border-radius: 40px;
+  padding: 20px;
+  left: calc(50% - 80px / 2);
+  width: 80px;
+  top: calc(50% - 80px / 2);
+  height: 80px;
+  padding-top: 30px;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.5s cubic-bezier(.02,.09,0,.75);
+}
+
+.flash{
+  height: calc(100% + 8px);
+  background: rgba(255, 255, 255, 0.65);
+  z-index: 9;
+  position: absolute;
+  width: calc(100% + 16px);
+  margin-right: 10%;
+  margin-left: -8px;
+  margin-bottom: -8px;
+  top: 0;
+  opacity: 0;
+  display: none;
+  transition: all 0.5s cubic-bezier(.02,.09,0,.75);
+}
+
+.line-legend span, .bar-legend span{
+  width: 10px;
+  z-index: 999999;
+  position: absolute;
+  left: 80px;
+  height: 10px;
+  margin-top: 6px;
+}

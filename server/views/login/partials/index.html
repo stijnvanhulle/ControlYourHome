@@ -1,0 +1,28 @@
+<div ng-controller="loginController">
+
+    <section class="frame">
+        <form ng-submit="login(email,password)">
+            <div class="row">
+                <h1 style="text-align: center; margin-bottom: 20px">Soc-iot login</h1>
+            </div>
+            <div class="row">
+                <div class="ui input">
+                    <input type="text" ng-model="email" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="ui input">
+                    <input type="password" ng-model="password" placeholder="Wachtwoord">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="submit" class="ui login button">
+                    Inloggen
+                </button>
+            </div>
+        </form>
+    </section>
+</div>

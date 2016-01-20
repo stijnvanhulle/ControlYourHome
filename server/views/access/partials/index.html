@@ -1,0 +1,93 @@
+<div class="container" id="access" ng-controller="accessController">
+
+    <div id="modal" ng-show="visibleModal==true">
+        <aside ng-click="closeModal()" class="background">
+
+        </aside>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 col-xs-10 col-xs-offset-1 ">
+                    <p>{{newUser.error}}</p>
+                    <div class="ui input form-group">
+                        <label for="firstname"></label>
+                        <input id="firstname" ng-model="newUser.firstname" type="text" required placeholder="voornaam">
+                    </div>
+                    <div class="ui input form-group">
+                        <label for="lastname"></label>
+                        <input id="lastname" ng-model="newUser.lastname" type="text" required placeholder="achternaam">
+                    </div>
+
+                    <div class="ui input form-group">
+                        <label for="email"></label>
+                        <input id="email" ng-model="newUser.email" type="email" required placeholder="email">
+                    </div>
+                    <div class="ui input form-group">
+                        <label for="password"></label>
+                        <input id="password" ng-model="newUser.password" ng-change="passwordCheck()" type="password" required placeholder="wachtwoord">
+                    </div>
+                    <div class="ui input form-group">
+                        <input ng-model="newUser.password_repeat" ng-change="passwordCheck()" type="password" required placeholder="wachtwoord">
+                    </div>
+                    <div class="form-group">
+                        <label for="type"></label>
+                        <select id="type" class="ui dropdown" ng-model="newUser.type" required>
+                            <option ng-repeat="item in usertypes" ng-value="item.id">{{item.name}}</option>
+                        </select>
+                    </div>
+
+
+                    <div class="right form-group">
+                        <button class="ui primary button" ng-click="addUser()" >Voeg toe</button>
+                        <button class="ui button" ng-click="closeModal()" >Cancel</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-xs-12">
+            <div class="left">
+                <h1>Access</h1>
+            </div>
+
+
+            <div class="right">
+                <button class="ui primary button" ng-click="showModal()">Nieuw</button>
+            </div>
+            <div ng-show="users.length==0 && loading==false">
+                <p>Geen data beschikbaar</p>
+            </div>
+
+            <loading ng-show="loading==true"></loading>
+
+            <section ng-show="users.length>0 && loading==false" class="items">
+
+                <div ng-repeat="item in users track by $index" id="{{$index}}">
+                    <h1>{{item.firstname + " " +  item.lastname}}  <span ng-show="item._id==USER._id">(ik)</span></h1>
+                    <p>Email: {{item.email}}</p>
+                    <p>Type: {{item.type.name}}</p>
+                    <p>{{item.createdOn | fromNow}} aangemaakt</p>
+
+                    <div class="right">
+
+                        <button class="ng-animate-disabled ui primary button" ng-click="updateUser(item)" ng-show="item.type.id==2 && item.active==true">Actief</button>
+                        <button class="ng-animate-disabled ui button" ng-click="updateUser(item)" ng-show="item.type.id==2 && item.active==false">Inactief</button>
+
+                        <button ng-show="item._id!=USER._id" class="ng-animate-disabled ui button remove" ng-click="removeUser(item,$index)">Verwijder</button>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+
+
+
+</div>

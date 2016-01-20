@@ -1,0 +1,29 @@
+<section class="container">
+    <div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 ">
+                <h1>IOT</h1>
+                <p>Temperature: {{sensors.temp==null?"Laden ...": sensors.temp + " °C"}}</p>
+                <p>humidity: {{sensors.hum==null?"Laden ...": sensors.hum + " %"}}</p>
+
+                <button ng-click="TurnLedOn(2)" class="ui large primary button">
+                    Aan
+                </button>
+                <button ng-click="TurnLedOff(2)" class="ui large button">
+                    Uit
+                </button>
+
+
+
+
+
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+    </div>
+
+</section>
+
+

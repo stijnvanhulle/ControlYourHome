@@ -1,0 +1,81 @@
+doctype html
+html(ng-app="app")
+  head
+    title= title
+    base(href='/')
+    //styles
+    link(rel="stylesheet", type="text/css", media="screen", href="/bower_components/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", media="screen", href="/css/owfont-regular.css")
+
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic")
+
+    script(src="/bower_components/jquery/dist/jquery.min.js")
+
+
+    link(rel='stylesheet', href='/css/style.min.css')
+
+    //favicons
+    link(rel="apple-touch-icon", sizes="57x57", href="/images/favicons/apple-touch-icon-57x57.png")
+    link(rel="apple-touch-icon", sizes="60x60", href="/images/favicons/apple-touch-icon-60x60.png")
+    link(rel="apple-touch-icon", sizes="72x72", href="/images/favicons/apple-touch-icon-72x72.png")
+    link(rel="apple-touch-icon", sizes="76x76", href="/images/favicons/apple-touch-icon-76x76.png")
+    link(rel="apple-touch-icon", sizes="114x114", href="/images/favicons/apple-touch-icon-114x114.png")
+    link(rel="apple-touch-icon", sizes="120x120", href="/images/favicons/apple-touch-icon-120x120.png")
+    link(rel="apple-touch-icon", sizes="144x144", href="/images/favicons/apple-touch-icon-144x144.png")
+    link(rel="apple-touch-icon", sizes="152x152", href="/images/favicons/apple-touch-icon-152x152.png")
+    link(rel="apple-touch-icon", sizes="180x180", href="/images/favicons/apple-touch-icon-180x180.png")
+    link(rel="icon", type="image/png", href="/images/favicons/favicon-32x32.png", sizes="32x32")
+    link(rel="icon", type="image/png", href="/images/favicons/favicon-194x194.png", sizes="194x194")
+    link(rel="icon", type="image/png", href="/images/favicons/favicon-96x96.png", sizes="96x96")
+    link(rel="icon", type="image/png", href="/images/favicons/android-chrome-192x192.png", sizes="192x192")
+    link(rel="icon", type="image/png", href="/images/favicons/favicon-16x16.png", sizes="16x16")
+    link(rel="manifest", href="/images/favicons/manifest.json")
+    link(rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5")
+    meta(name="apple-mobile-web-app-title" content="Soc-iot")
+    meta(name="application-name" content="Soc-iot")
+    meta(name="msapplication-TileColor" content="#ffffff")
+    meta(name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png")
+    meta(name="theme-color" content="#ffffff")
+
+    //based on
+    meta(name="keywords" content="iot")
+    meta(name="description" content="Stijn Van Hulle, webdesigner.")
+    meta(name="author" content="Stijn Van Hulle")
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")
+
+    script(src="//d3js.org/d3.v3.min.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js")
+
+
+  body(id="login")
+    div(id='overlay')
+      aside()
+    block content
+
+
+  script(data-pace-options='{ "ajax": true }')
+  script(src="/socket.io/socket.io.js")
+
+  //angular components
+  script(src="/bower_components/angular/angular.js")
+  script(src="/bower_components/angular-resource/angular-resource.min.js")
+  script(src="/bower_components/angular-route/angular-route.min.js")
+  script(src="/bower_components/angular-animate/angular-animate.min.js")
+  script(src="/bower_components/angular-aria/angular-aria.min.js")
+  script(src="/bower_components/angular-sanitize/angular-sanitize.min.js")
+  script(src="/bower_components/angular-md5/angular-md5.js")
+  script(src="/bower_components/moment/moment.js")
+
+  script(src="http://crisbeto.github.io/angular-svg-round-progressbar/roundProgress.min.js")
+  script(src="/bower_components/angular-chart.js/dist/angular-chart.js")
+  script(src="/js/modules.min.js") //all modules
+  script(src="/js/app.bundle.js") //app file
+
+
+
+
+
+  //script(src="/js/app.min.js")
+  //script(src="/js/controllers.min.js")

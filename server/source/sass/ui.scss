@@ -1,0 +1,181 @@
+@import "modules/spinner";
+
+.ui.button{
+  background: #e0e1e2;
+  color: #000;
+  cursor: pointer;
+  font-weight: 200;
+  font-size: 1em;
+  border: none;
+  margin: 0 .25em 0 0;
+  padding: 0.6em 1em;
+  text-shadow: none;
+  line-height: 1em;
+  text-decoration: none;
+  border-radius: 0.3em;
+  box-shadow: 0 0 0 1px transparent inset,0 0 0 0 rgba(34,36,38,.15) inset;
+  -webkit-transition:  all .1s ease;
+  transition: all .1s ease;
+}
+
+.ui.button:hover{
+  background-color: #cacbcd;
+  -webkit-transition:  all .1s ease;
+  transition: all .1s ease;
+}
+
+.ui.primary.button{
+  color: white;
+  background: #2185d0;
+}
+.ui.primary.button:hover{
+  background: #1678c2;
+  -webkit-transition:  all .1s ease;
+  transition: all .1s ease;
+}
+.ui.button.trans {
+  background: rgba(224, 225, 226, 0.15);
+  color: white;
+  float: right;
+}
+.ui.button.trans:hover{
+  background: rgba(224, 225, 226, 0.35);
+}
+.ui.remove.button{
+  color: white;
+  background: #ff493d;
+}
+.ui.remove.button:hover{
+  background: #ba322b;
+  -webkit-transition:  all .1s ease;
+  transition: all .1s ease;
+}
+.ui.login.button{
+  background: #e6e6e6;
+  color: #000;
+  margin: 0 .25em -6px 0;
+  border-radius: 0;
+  transition: all .1s ease;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: calc(100% - 40px);
+  margin-bottom: 8px;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+.ui.login.button:hover{
+  background-color: #cacbcd;
+  -webkit-transition:  all .1s ease;
+  transition: all .1s ease;
+}
+input{
+  margin: 0;
+  max-width: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  text-align: left;
+  line-height: 1.2142em;
+  padding: .67861429em 1em;
+  background: #fff;
+  border: 1px solid rgba(34,36,38,.15);
+  color: rgba(0,0,0,.87);
+  border-radius: .28571429rem;
+  -webkit-transition: box-shadow .1s ease,border-color .1s ease;
+  transition: box-shadow .1s ease,border-color .1s ease;
+  box-shadow: none;
+}
+input:focus{
+  border-color: #85b7d9;
+  background: #fff;
+  color: rgba(0,0,0,.8);
+  box-shadow: none;
+}
+input:required:invalid, input:focus:invalid {
+  border-bottom: 2px solid red;
+}
+input:required:valid {
+  border-bottom: 2px solid green;
+}
+
+.ui.input{
+  position: relative;
+  float: left;
+  width: 100%;
+  input{
+    width: 100%;
+  }
+}
+
+select.ui.dropdown.multi{
+  height: 200px;
+
+}
+select.ui.dropdown{
+  height: 38px;
+  padding: .5em;
+  border: 1px solid rgba(34,36,38,.15);
+  visibility: visible;
+  background: #fff;
+  color: #E0E1E2;
+  font-family: "Open Sans","Helvetica Neue",Arial,Helvetica,sans-serif;
+  min-width: 100px;
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  color: black;
+
+}
+
+
+.ui.modal {
+    font-size: 1rem;
+    position: absolute;
+    margin-top: 20px;
+    top: 0px;
+    z-index: 99999999;
+  }
+
+
+.modal-backdrop.in{
+  z-index: 99999998;
+}
+#modal{
+  z-index: 99999;
+  left: 0px;
+  right: 0px;
+  bottom:0px;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+
+  aside.background{
+    position: absolute;
+    animation: fadeIn .4s linear both;
+    background: rgba(0, 0, 0, 0.58);
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .right{
+    margin-top: 25px;
+  }
+  .content {
+    padding-top: 80px;
+    animation: bounceIn 0.8s linear both;
+    
+    .row > div{
+      padding: 12px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 5px 6px -3px rgba(0,0,0,.2),0 9px 12px 1px rgba(0,0,0,.14),0 3px 16px 2px rgba(0,0,0,.12);
+      border-radius: 4px;
+    }
+   
+  }
+}
+

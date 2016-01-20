@@ -1,0 +1,21 @@
+header{
+  display: none;
+}
+#filter .row:first-child{
+  display: none;
+}
+.panel {
+  background: none;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+svg.round-progress {
+  width: 100px !important;
+  height: 100px !important;
+}
+#filter .row:nth-child(3) .panel {
+  width: 50%;
+}
+#filter .row:nth-child(4) .panel {
+  width: 50%;
+}

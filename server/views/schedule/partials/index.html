@@ -1,0 +1,174 @@
+<div class="container" id="schedule" ng-controller="scheduleController">
+
+    <div id="modal" ng-show="visibleModal==true">
+        <aside ng-click="closeModal()" class="background">
+
+        </aside>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 col-xs-10 col-xs-offset-1 ">
+                    <div class="ui input form-group">
+                        <input ng-model="currentSchedule.name" type="text" placeholder="name">
+                    </div>
+                    <div class="form-group">
+                        <select class="ui dropdown" ng-model="currentSchedule.sensor">
+                            <option ng-selected="currentSchedule.sensor==item" ng-repeat="item in leds" ng-value="item">{{"led " + item}}</option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <select class="ui dropdown multi" ng-change="updateHoursDays()" ng-model="updatedDays" multiple ng-options="item.id as item.value for item in days">
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <select class="ui dropdown multi" ng-change="updateHoursDays()" ng-model="updatedHours" multiple ng-options="item.id as item.value for item in hours">
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <select class="ui dropdown" ng-model="currentSchedule.status">
+                            <option ng-selected="currentSchedule.status==true" ng-value="1">Aan</option>
+                            <option ng-selected="currentSchedule.status==false" ng-value="0">Uit</option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="right form-group">
+                        <button class="ui primary button" ng-click="updateSchedule()" >Pas aan</button>
+                        <button class="ui button" ng-click="closeModal()" >Cancel</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-xs-12">
+            <div class="left">
+                <h1>Schedule</h1>
+            </div>
+
+
+            <div class="right">
+                <button class="ui primary button" ng-show="visibleSchedule==false" ng-click="add()">Nieuw</button>
+            </div>
+
+            <section ng-show="visibleSchedule==true">
+                <div class="form-group">
+                    <input style="width: 300px; margin-bottom: 8px" ng-model="newSchedule.name" type="text" placeholder="name">
+                    <div class="right">
+                        <button class="ui button" ng-click="addSchedule()">Voeg toe</button>
+                        <button class="ui button" ng-click="clearSchedules()">Clear</button>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+                    <select class="ui dropdown" ng-model="newSchedule.sensor">
+                        <option ng-selected="newSchedule.sensor" ng-repeat="item in leds" ng-value="item">{{"led " + item}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <select class="ui dropdown multi" ng-change="updateHoursDays()" ng-model="updatedDays" multiple ng-options="item.id as item.value for item in days">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="ui dropdown multi" ng-change="updateHoursDays()" ng-model="updatedHours" multiple ng-options="item.id as item.value for item in hours">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="ui dropdown" ng-model="newSchedule.status">
+                        <option ng-selected="newSchedule.status" ng-value="1">Aan</option>
+                        <option ng-selected="newSchedule.status" ng-value="0">Uit</option>
+                    </select>
+                </div>
+
+
+            </section>
+        </div>
+
+    </div>
+    <div class="row" ng-show="schedulesNew!=null && schedulesNew.length>0">
+        <div class="col-md-6 col-md-offset-3 col-xs-12">
+            <h2>U hebt gekozen voor het volgende</h2>
+            <section ng-repeat="item in schedulesNew track by $index">
+                <p>{{item.name}}</p>
+                <p>Sensor: Led {{item.sensor}}</p>
+                <p>Status: {{item.status==true?"Aan":"Uit"}}</p>
+                <p>Op volgende dagen:
+                        <span ng-repeat="day in item.days">
+                        {{day | weekday}}
+                        </span>
+                </p>
+                <p>Op volgende uren:
+                        <span ng-repeat="_hour in item.hours">
+                        {{_hour | hour}}
+                        </span>
+                </p>
+            </section>
+
+            <div class="right">
+                <button class="ui button primary" ng-click="addSchedules()">Pas toe</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-xs-12">
+            <div ng-show="schedules.length==0 && loading==false">
+                <p>Geen data beschikbaar</p>
+            </div>
+
+            <loading ng-show="loading==true"></loading>
+
+            <section ng-show="schedules.length>0 && loading==false" class="items">
+
+                <div ng-repeat="item in schedules track by $index" id="{{$index}}">
+                    <h1>{{item.name }}</h1>
+
+
+                    <p>Sensor: Led {{item.sensor}}</p>
+                    <p>Status: {{item.status==true?"Aan":"Uit"}}</p>
+                    <p>Op volgende dagen:
+                        <span ng-repeat="day in item.days">
+                        {{day | weekday}}
+                        </span>
+                    </p>
+                    <p>Op volgende uren:
+                        <span ng-repeat="_hour in item.hours">
+                        {{_hour | hour}}
+                        </span>
+                    </p>
+
+                    <p>{{item.createdOn | fromNow}} aangemaakt</p>
+
+                    <div class="right">
+                        <button class="ng-animate-disabled ui button" ng-click="showModal(item)" >Pas aan</button>
+                        <button class="ng-animate-disabled ui button remove" ng-click="remove(item,$index)" >Verwijder</button>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+
+
+</div>

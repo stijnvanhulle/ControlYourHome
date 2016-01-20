@@ -1,0 +1,17 @@
+svg.round-progress {
+  width: 100px !important;
+  height: 100px !important;
+}
+#login .frame{
+  width: calc(100% - 80px);
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#modal .content {
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#photos {
+  margin-bottom: -24px;
+}

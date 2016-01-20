@@ -1,0 +1,256 @@
+#floorplan{
+  float: left;
+  position: relative;
+  //transform: perspective( 1000px ) rotateX(45deg);
+  //animation: floorplan .4s ease-in-out both;
+  animation-fill-mode: forwards;
+  transform-style: preserve-3d;
+  transition: transform 0.4s;
+  div.keuken{
+    position: absolute;
+    z-index: 99;
+    font-size: 1em;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: black;
+    margin-left: 15px;
+    margin-top: 40px;
+  }
+  div.garage{
+    position: absolute;
+    z-index: 99;
+    font-size: 1em;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: black;
+    margin-left: 540px;
+    margin-top: 10px;
+  }
+
+  div.woonkamer{
+    position: absolute;
+    z-index: 99;
+    font-size: 1em;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: black;
+    margin-left: 250px;
+    margin-top: 40px;
+  }
+
+
+  svg{
+    position: absolute;
+    transition: all 0.5s cubic-bezier(.55, 0, .1, 1);
+  }
+  svg:hover{
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+    transition: all 0.5s cubic-bezier(.55, 0, .1, 1);
+  }
+  > svg > rect{
+    box-sizing: border-box;
+    //fill:#5A5B5E;
+    fill:#FFFFFF;
+    stroke:#777777;
+    stroke-width:0.25;
+    stroke-miterlimit:10;
+    padding: 4px;
+    width: 100%;
+    height: 100%;
+
+    animation: fadeOpacityIn .4s ease-in-out both;
+    transition: opacity,transform 0.5s cubic-bezier(.55, 0, .1, 1);
+  }
+  p{
+
+  }
+}
+
+#plan nav {
+  li {
+    cursor: pointer;
+    font-weight: 200;
+    margin-bottom: 5px;
+    color: rgba(41, 41, 41, 0.86);
+    text-transform: uppercase;
+
+  }
+  li.selected{
+    color: black;
+  }
+}
+
+
+//room1
+$room1_height:100px;
+$room1_width:230px;
+
+//room2
+$room2_height:100px;
+$room2_width:280px;
+
+//room3
+$room3_height:150px;
+$room3_width:100px;
+
+//room4
+$room4_height:300px;
+$room4_width:230px;
+
+//room5
+$room5_height:300px;
+$room5_width:280px;
+
+//items svg global
+.lamp{
+  z-index: 999;
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  transition: all 0.5s cubic-bezier(.55, 0, .1, 1);
+  animation: fadeOpacityIn .4s ease-in-out both 1s;
+  cursor: pointer;
+
+  .on{fill:#F2D342;transition: all 2s cubic-bezier(.55, 0, .1, 1);}
+  .off{fill:#000;transition: all 2s cubic-bezier(.55, 0, .1, 1);}
+  .st1{fill:#546673;}
+}
+svg.room .lamp1{
+  height: 150px;
+  width: 120px;
+  margin-left: 300px;
+}
+
+#room1{
+  x: 0px;
+  y: 0px;
+  height: $room1_height;
+  width: $room1_width;
+
+  rect{
+
+  }
+
+}
+
+#room2{
+  margin-left: $room1_width  + 5px;
+  y:0px;
+  height: $room2_height;
+  width: $room2_width;
+
+  rect{
+
+  }
+}
+
+#room3{
+  margin-left:$room1_width + 5px + $room2_width  + 5px;
+  y:0px;
+  height: $room3_height;
+  width: $room3_width;
+
+  rect{
+
+  }
+}
+#room4{
+  margin-left:0px;
+  margin-top: $room1_height + 5px;
+  height: $room4_height;
+  width: $room4_width;
+
+  rect{
+
+  }
+}
+
+#room5{
+  margin-left: $room4_width + 5px ;
+  margin-top: $room1_height + 5px;
+  height: $room5_height;
+  width: $room5_width;
+
+  rect{
+
+  }
+}
+
+
+
+#items{
+  #items svg#bank, #items svg#zetel, #items svg#lamp, #items svg#auto {
+    //left: -85px; //zonder perspectief
+  }
+  svg#bank {
+    z-index: 999;
+    position: absolute;
+    height: 150px;
+    margin-left: 400px;
+    margin-top: 203px;
+    transition: all 0.5s cubic-bezier(.55, 0, .1, 1);
+    animation: fadeOpacityIn .4s ease-in-out both 1s;
+
+    .st0{opacity:0;fill:#878589;}
+    .st1{fill:#878589;}
+    .st2{fill:#FFC345;}
+    .st3{fill:#213228;}
+    .st4{fill:#E19F1C;}
+  }
+
+
+  svg#zetel{
+    z-index: 999;
+    position: absolute;
+    width: 80px;
+    margin-left: 480px;
+    margin-top: 60px;
+    transition: all 0.5s cubic-bezier(.55, 0, .1, 1);
+    animation: fadeOpacityIn .4s ease-in-out both 1s;
+
+    .st0{fill:#AC901F;}
+    .st1{fill:#B6483D;}
+    .st2{fill:#89362E;}
+    .st3{fill:#FF9169;}
+  }
+  svg#auto{
+    z-index: 999;
+    position: absolute;
+    width: 300px;
+    margin-left: 560px;
+    margin-top: 90px;
+    transform: rotate(-30deg);
+    transition: all 0.5s cubic-bezier(.55, 0, .1, 1);
+    animation: fadeOpacityIn .4s ease-in-out both 1s;
+
+    .st0{fill:#BFBFBF;}
+    .st1{fill:#BF0411;}
+    .st2{fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+    .st3{fill:#CE6B00;}
+    .st4{fill:none;stroke:#BF0411;stroke-width:0.5;stroke-miterlimit:10;}
+    .st5{fill:#BF0411;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+    .st6{fill:url(#XMLID_2_);}
+    .st7{fill:url(#XMLID_3_);}
+    .st8{fill:url(#XMLID_4_);}
+    .st9{fill:url(#XMLID_5_);stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+    .st10{fill:#333333;}
+    .st11{fill:#D9D9D9;}
+    .st12{fill:url(#XMLID_6_);}
+    .st13{fill:url(#XMLID_7_);}
+    .st14{fill:url(#XMLID_8_);}
+    .st15{fill:url(#XMLID_9_);}
+    .st16{fill:url(#XMLID_10_);}
+    .st17{fill:url(#XMLID_11_);}
+    .st18{fill:url(#XMLID_12_);}
+    .st19{fill:url(#XMLID_13_);}
+    .st20{fill:url(#XMLID_14_);}
+    .st21{fill:url(#XMLID_15_);}
+    .st22{fill:url(#XMLID_16_);}
+    .st23{fill:url(#XMLID_17_);}
+    .st24{fill:url(#XMLID_18_);}
+    .st25{fill:url(#XMLID_19_);}
+    .st26{fill:url(#XMLID_20_);}
+    .st27{fill:url(#XMLID_21_);}
+    .st28{fill:url(#XMLID_22_);stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+  }
+}

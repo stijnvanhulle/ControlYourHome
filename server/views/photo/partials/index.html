@@ -1,0 +1,74 @@
+<div class="container" id="photo">
+
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <div class="panel">
+                        <h1>Camera</h1>
+                        <div id="count">
+
+                        </div>
+                        <aside class="takeImage">
+                            <button class="ui button" ng-show="visibleTakeImage==true" ng-click="takeImage()">Neem foto</button>
+                        </aside>
+                        <section>
+                            <div class="flash"></div>
+                            <div id="webcam"><img ng-src="{{stream}}"/> </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-xs-12">
+            <div class="panel">
+                <h1>Camerashot</h1>
+                <div class="images" style="height: 360px;">
+                    <div ng-show="imagesPassed==null">Laden</div>
+                    <div ng-show="imagesPassed.length==0">Geen beweging</div>
+                    <div ng-show="imagesPassed!=null">
+                        <section ng-repeat="item in imagesPassed">
+                            <img style="width: 100%;" src="{{item}}"/>
+
+                        </section>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel">
+                <h1>Alle foto's</h1>
+                <div ng-show="images.lentgh==0 && loading==false">
+                    <p>Geen data beschikbaar</p>
+                </div>
+
+                <loading ng-show="loading==true"></loading>
+
+                <div ng-show="images.length>0 && loading==false"  id="photos" class="all">
+                    <div ng-repeat="item in images">
+                        <figure>
+                            <img style="width: 100%;" src="{{item.photo}}"/>
+                            <figcaption>{{item.createdOn | hourAndDay}}</figcaption>
+                        </figure>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
